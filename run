@@ -10,8 +10,8 @@
 . conf
 
 main() {
-	local outfile=${1-"${OUTFILE}"}
-	local infile=${2-"${INFILE}"}
+	local outfile=${1-"${OUTFILE}"}; shift
+	local infile=${1-"${INFILE}"}; shift
 	local bash_dir=`dirname ${outfile}`
 	local uname_a=`uname -a`
 	
