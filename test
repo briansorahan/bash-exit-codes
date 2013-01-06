@@ -1,0 +1,15 @@
+#!/bin/bash
+#
+# bash-exit-codes
+#
+# Brian Sorahan
+
+. conf
+
+test_sourcing() { . ${OUTFILE}; }
+
+main() {
+	test_sourcing
+}
+
+main "$@"

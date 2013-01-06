@@ -1,0 +1,2 @@
+OUTFILE="/etc/bash.d/exitcodes"
+INFILE="/usr/include/sysexits.h"
