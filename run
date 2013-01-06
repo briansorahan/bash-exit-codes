@@ -10,10 +10,10 @@
 . conf
 
 main() {
-	local -r outfile=${1-"${OUTFILE}"}
-	local -r infile=${2-"${INFILE}"}
-	local -r bash_dir=`dirname ${outfile}`
-	local -r uname_a=`uname -a`
+	local outfile=${1-"${OUTFILE}"}
+	local infile=${2-"${INFILE}"}
+	local bash_dir=`dirname ${outfile}`
+	local uname_a=`uname -a`
 	
 	[ ! -d "${bash_dir}" ] && mkdir -p "${bash_dir}"
 
@@ -25,11 +25,11 @@ main() {
 PREAMBLE
 
 	# captures: 1 2
-	local -r exitcode_re='EX\([_[:alpha:]]*\)[[:space:]]*\([[:digit:]]*\)'
+	local exitcode_re='EX\([_[:alpha:]]*\)[[:space:]]*\([[:digit:]]*\)'
 	#captures: 3
-	local -r comment_re='\/\* \(.*\) \*\/'
+	local comment_re='\/\* \(.*\) \*\/'
 	# sed's match pattern
-	local -r define_re="#define ${exitcode_re}[[:space:]]*${comment_re}"
+	local define_re="#define ${exitcode_re}[[:space:]]*${comment_re}"
 
 	sed -n "s/${define_re}/EX\1=\2 # \3/p" "${infile}" >>"${outfile}"
 }
